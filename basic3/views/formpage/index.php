@@ -2,13 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Json;
 
 echo "<select id='populated_field'>";
 foreach ($model as $x) {
 	echo "<option value='".$x->table_name."'>".$x->table_name."</option>";
 	
 }
-echo "<select>";
+echo "</select>";
 
 ?>
 
@@ -19,11 +20,12 @@ $script = <<< JS
 $('#populated_field').change(function(){
 	var name=$(this).val();
 	
-	$.get('index.php?r=formpage/getdetails',{name:name},function(data){
+	$.get('index.php?r=formpage/gotoform',{name:name},function(data){
+		//alert(data);
 		//var data=$.parseJSON(data);
-		//$('#customers-city').attr('value',data.city);
+		$('#shukla').html(data);
 		//$('#customers-province').attr('value',data.province);
-		alert(data);
+		//alert(data);
 	});
 		
 
@@ -33,3 +35,6 @@ JS;
 $this->registerJS($script);
 
 ?>
+<div id="shukla">
+
+</div>
