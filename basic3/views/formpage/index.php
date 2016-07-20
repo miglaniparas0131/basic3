@@ -35,6 +35,9 @@ JS;
 $this->registerJS($script);
 
 ?>
+
+
+
 <div id="shukla">
 
 </div>
